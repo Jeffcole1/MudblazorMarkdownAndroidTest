@@ -1,7 +1,7 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<MudMarkdown Value="@Text"></MudMarkdown>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    string Text = "```csharp\nusing System;\nusing System.Collections.Generic;\n\npublic class Program\n{\n    public static void Main(string[] args)\n    {\n        List<int> numbers = GenerateRandomNumbers(10); // Change the size of the list here\n\n        Console.WriteLine(\"Original List:\");\n        PrintList(numbers);\n\n        QuickSort(numbers, 0, numbers.Count - 1);\n\n        Console.WriteLine(\"Sorted List:\");\n        PrintList(numbers);\n    }\n\n    public static void QuickSort(List<int> numbers, int low, int high)\n    {\n        if (low < high)\n        {\n            int pivotIndex = Partition(numbers, low, high);\n\n            QuickSort(numbers, low, pivotIndex - 1);\n            QuickSort(numbers, pivotIndex + 1, high);\n        }\n    }\n\n    public static int Partition(List<int> numbers, int low, int high)\n    {\n        int pivot = numbers[high];\n        int i = low - 1;\n\n        for (int j = low; j < high; j++)\n        {\n            if (numbers[j] < pivot)\n            {\n                i++;\n                Swap(numbers, i, j);\n            }\n        }\n\n        Swap(numbers, i + 1, high);\n\n        return i + 1;\n    }\n\n    public static void Swap(List<int> numbers, int i, int j)\n    {\n        int temp = numbers[i];\n        numbers[i] = numbers[j];\n        numbers[j] = temp;\n    }\n\n    public static List<int> GenerateRandomNumbers(int count)\n    {\n        List<int> numbers = new List<int>();\n\n        Random random = new Random();\n\n        for (int i = 0; i < count; i++)\n        {\n            numbers.Add(random.Next(1, 101)); // Change the range of random numbers here\n        }\n\n        return numbers;\n    }\n\n    public static void PrintList(List<int> numbers)\n    {\n        foreach (int number in numbers)\n        {\n            Console.Write(number + \" \");\n        }\n\n        Console.WriteLine();\n    }\n}\n```";
+}

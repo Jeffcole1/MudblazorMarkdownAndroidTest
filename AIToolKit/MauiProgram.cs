@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MudBlazor;
 using MudBlazor.Services;
 
 namespace AIToolKit;
@@ -17,6 +18,7 @@ public static class MauiProgram
 
 		builder.Services.AddMauiBlazorWebView();
         builder.Services.AddMudServices();
+		builder.Services.AddMudMarkdownServices();
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
